@@ -1,2 +1,2 @@
-# vim
-my vim
+# vimrc
+my vimrc
