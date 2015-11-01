@@ -1,2 +1,2 @@
 # vimrc
-my vimrc
+my vimrc base on exVim
