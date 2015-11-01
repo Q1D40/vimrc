@@ -1,2 +1,0 @@
-let g:exvim_custom_path=$VIM
-source $VIM/.vimrc
