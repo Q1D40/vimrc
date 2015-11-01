@@ -1,0 +1,19 @@
+" This file will be loaded after .vimrc.plugins, 
+" but before 'filetype plugin on', 'filetype indent on' and 'syntax on' been executed. 
+" This file is designed to be safe to add your own plugins and plugins' configuration.
+
+" Add your customized plugins:
+" Example: Plugin 'foo/bar/foobar'
+
+Plugin 'briancollins/vim-jst'
+
+Plugin 'rust-lang/rust.vim'
+
+Plugin 'fatih/vim-go'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+Plugin 'w0ng/vim-hybrid'
