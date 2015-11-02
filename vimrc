@@ -469,6 +469,11 @@ noremap <Down> gj
 " even be separated by punctuation (such as "abc = def").
 nnoremap <silent> <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
+
+"/////////////////////////////////////////////////////////////////////////////
+" plugin
+"/////////////////////////////////////////////////////////////////////////////
+
 " Pathogen or Vundle (deafult is Vundle) {{{
 
 " Comment-out if you want to use pahogen
