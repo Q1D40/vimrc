@@ -4,6 +4,8 @@ yangmu373's vimrc for [Vim](http://www.vim.org) and [MacVim](https://github.com/
 
 *Requires [Git] 1.7+ and [Vim] 7.3+*
 
+![PluginList](http://i.imgur.com/FGxtMay.png)
+
 ## Quick Start
 
 1. Set up vimrc:
