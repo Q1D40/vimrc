@@ -2,13 +2,13 @@
 
 yangmu373's vimrc
 
-## Start
+## Quick Start
 
 1. Set up vimrc:
 
    `$ git clone https://github.com/yangmu373/vimrc/vimrc.git ~/.vimrc`
 
-2. Set up Vundle:
+2. Set up [Vundle](https://github.com/VundleVim/Vundle.vim):
 
    `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
