@@ -14,7 +14,7 @@ yangmu373's vimrc for [Vim](http://www.vim.org) and [MacVim](https://github.com/
 
    `$ cd vimrc`
 
-   **Please backup your .vimrc before copy**
+   *Please backup your .vimrc before copy*
    `$ cp vimrc ~/.vimrc`
 
 2. Set up [Vundle](https://github.com/VundleVim/Vundle.vim):
