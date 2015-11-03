@@ -396,107 +396,22 @@ if has('autocmd')
 endif
 
 "/////////////////////////////////////////////////////////////////////////////
-" Key Mappings
-"/////////////////////////////////////////////////////////////////////////////
-
-" NOTE: F10 looks like have some feature, when map with F10, the map will take no effects
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" define the copy/paste judged by clipboard
-if &clipboard ==# 'unnamed'
-    " fix the visual paste bug in vim
-    " vnoremap <silent>p :call g:()<CR>
-else
-    " general copy/paste.
-    " NOTE: y,p,P could be mapped by other key-mapping
-    map <leader>y "*y
-    map <leader>p "*p
-    map <leader>P "*P
-endif
-
-" copy folder path to clipboard, foo/bar/foobar.c => foo/bar/
-nnoremap <silent> <leader>y1 :let @*=fnamemodify(bufname('%'),":p:h")<CR>
-
-" copy file name to clipboard, foo/bar/foobar.c => foobar.c
-nnoremap <silent> <leader>y2 :let @*=fnamemodify(bufname('%'),":p:t")<CR>
-
-" copy full path to clipboard, foo/bar/foobar.c => foo/bar/foobar.c
-nnoremap <silent> <leader>y3 :let @*=fnamemodify(bufname('%'),":p")<CR>
-
-" F8 or <leader>/:  Set Search pattern highlight on/off
-nnoremap <F8> :let @/=""<CR>
-nnoremap <leader>/ :let @/=""<CR>
-" DISABLE: though nohlsearch is standard way in Vim, but it will not erase the
-"          search pattern, which is not so good when use it with exVim's <leader>r
-"          filter method
-" nnoremap <F8> :nohlsearch<CR>
-" nnoremap <leader>/ :nohlsearch<CR>
-
-" map Ctrl-Tab to switch window
-nnoremap <S-Up> <C-W><Up>
-nnoremap <S-Down> <C-W><Down>
-nnoremap <S-Left> <C-W><Left>
-nnoremap <S-Right> <C-W><Right>
-
-" easy buffer navigation
-" NOTE: if we already map to EXbn,EXbp. skip setting this
-if !hasmapto(':EXbn<CR>') && mapcheck('<C-l>','n') == ''
-    nnoremap <C-l> :bn<CR>
-endif
-if !hasmapto(':EXbp<CR>') && mapcheck('<C-h>','n') == ''
-    noremap <C-h> :bp<CR>
-endif
-
-" easy diff goto
-noremap <C-k> [c
-noremap <C-j> ]c
-
-" enhance '<' '>' , do not need to reselect the block after shift it.
-vnoremap < <gv
-vnoremap > >gv
-
-" map Up & Down to gj & gk, helpful for wrap text edit
-noremap <Up> gk
-noremap <Down> gj
-
-" TODO: I should write a better one, make it as plugin exvim/swapword
-" VimTip 329: A map for swapping words
-" http://vim.sourceforge.net/tip_view.php?tip_id=
-" Then when you put the cursor on or in a word, press "\sw", and
-" the word will be swapped with the next word.  The words may
-" even be separated by punctuation (such as "abc = def").
-nnoremap <silent> <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
-
-"/////////////////////////////////////////////////////////////////////////////
 " plugin start
 "/////////////////////////////////////////////////////////////////////////////
 
-" Pathogen or Vundle (deafult is Vundle) {{{
+" Vundle
 
-" Comment-out if you want to use pahogen
-" execute pathogen#infect()
-" com! -nargs=+ Bundle
-
-" man.vim: invoked by :Man {name}
+" man.vim
 source $VIMRUNTIME/ftplugin/man.vim
 
-" let Vundle manage Vundle, required
+" Vundle
 " ---------------------------------------------------
 Plugin 'gmarik/Vundle.vim'
-
-"}}}
-
-" general plugins {{{
 
 " vim-color-solarized
 " ---------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 
-" DISABLE: vim-airline makes Vim editing slow when there are too many buffers opened
-"          if you don't mind, and love this plugin, uncomment the script below
-"          to enable it
 " vim-airline
 " ---------------------------------------------------
 Plugin 'bling/vim-airline'
@@ -519,120 +434,105 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_warning = ''
 
 " ctrlp: invoke by <ctrl-p>
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
-let g:ctrlp_follow_symlinks = 2
-let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
-nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
+" Plugin 'kien/ctrlp.vim'
+" let g:ctrlp_working_path_mode = ''
+" let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+" let g:ctrlp_follow_symlinks = 2
+" let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
+" nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
 
-" vim-fugitive: invoke most by :Gdiff
+" vim-fugitive
 " ---------------------------------------------------
 Plugin 'tpope/vim-fugitive'
 
-" vim-surround: invoke when you select words and press 's'
+" vim-surround
 " ---------------------------------------------------
 Plugin 'tpope/vim-surround'
 
 xmap s <Plug>VSurround
 
-" DISABLE
-" " Plugin 'tpope/vim-dispatch'
-" " ---------------------------------------------------
+" Plugin 'tpope/vim-dispatch'
 
-" nerdtree: invoke by :NERDTreeToggle
+" nerdtree
 " ---------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMouseMode = 1
 let g:NERDTreeMapToggleZoom = '<Space>'
+
 map <C-n> :NERDTreeToggle<CR>
 
-" nerdcommenter: invoke by <leader>c<space>, <leader>cl, <leader>cu, <F11> or <C-F11>
+" nerdcommenter
 " ---------------------------------------------------
-Plugin 'scrooloose/nerdcommenter'
+" Plugin 'scrooloose/nerdcommenter'
+"
+" let g:NERDSpaceDelims = 1
+" let g:NERDRemoveExtraSpaces = 1
+" let g:NERDCustomDelimiters = {
+"             \ 'vimentry': { 'left': '--' },
+"             \ }
+" map <unique> <F11> <Plug>NERDCommenterAlignBoth
+" map <unique> <C-F11> <Plug>NERDCommenterUncomment
 
-let g:NERDSpaceDelims = 1
-let g:NERDRemoveExtraSpaces = 1
-let g:NERDCustomDelimiters = {
-            \ 'vimentry': { 'left': '--' },
-            \ }
-map <unique> <F11> <Plug>NERDCommenterAlignBoth
-map <unique> <C-F11> <Plug>NERDCommenterUncomment
-
-" syntastic: invoke when you save file and have syntac-checker
+" syntastic
 " ---------------------------------------------------
 Plugin 'scrooloose/syntastic'
 
 " this will make html file by Angular.js ignore errors
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
-" DISABLE: use ex-autocomplpop instead
-" " neocomplcache: invoke when you insert words
-" Plugin 'Shougo/neocomplcache.vim'
+" neocomplcache.vim
 " " ---------------------------------------------------
+" Plugin 'Shougo/neocomplcache.vim'
 
 " let g:neocomplcache_enable_at_startup = 1
 " let g:neocomplcache_auto_completion_start_length = 2
 " let g:neocomplcache_enable_smart_case = 1
 " let g:neocomplcache_enable_auto_select = 1 " let neocomplcache's completion behavior like AutoComplPop
-" " let g:neocomplcache_disable_auto_complete = 1 " Enable this if you like TAB for complete
+" let g:neocomplcache_disable_auto_complete = 1 " Enable this if you like TAB for complete
 " " inoremap <C-p> <C-x><C-u>
 " " inoremap <expr><TAB>  pumvisible() ? '\<Down>' : '<TAB>'
 " " inoremap <expr><S-TAB>  pumvisible() ? '\<Up>' : ''
 
-" DISABLE: use ex-autocomplpop instead
-" " neocomplete: invoke when you insert words
-" Plugin 'Shougo/neocomplete.vim'
-" " ---------------------------------------------------
+" neocomplete.vim
+" ---------------------------------------------------
+Plugin 'Shougo/neocomplete.vim'
 
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#enable_auto_select = 1 " let neocomplete's completion behavior like AutoComplPop
-" " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1 " let neocomplete's completion behavior like AutoComplPop
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" DISABLE: use ex-autocomplpop instead
 " " YouCompleteMe
+" " ---------------------------------------------------
 " Plugin 'Valloric/YouCompleteMe'
-" " ---------------------------------------------------
 
-" TODO: choose a snippet plugin
+" " neosnippet.vim
+" " ---------------------------------------------------
 " Plugin 'Shougo/neosnippet.vim'
-" " ---------------------------------------------------
 
+" " snipmate.vim
+" " ---------------------------------------------------
 " Plugin 'msanders/snipmate.vim'
-" " ---------------------------------------------------
 
+" snipmate-snippets
+" " ---------------------------------------------------
 " Plugin 'spf13/snipmate-snippets'
-" " ---------------------------------------------------
 
-" undotree: invoke by <Leader>u
+" undotree
 " ---------------------------------------------------
 Plugin 'mbbill/undotree'
 
-nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>ud :UndotreeToggle<CR>
+
 let g:undotree_SetFocusWhenToggle=1
 let g:undotree_WindowLayout = 4
-
-" NOTE: this will prevent undotree closed then jump to minibufexpl
-function! g:CloseUndotree()
-    call UndotreeHide()
-    call ex#window#goto_edit_window()
-endfunction
-
-function g:Undotree_CustomMap()
-    if has('gui_running')
-        nnoremap <silent> <script> <buffer> <ESC> :call g:CloseUndotree()<CR>
-    else
-        nnoremap <silent> <script> <buffer> <leader><ESC> :call g:CloseUndotree()<CR>
-    endif
-endfunction
 
 " tabular: invoke by <leader>= alignment-character
 " ---------------------------------------------------
@@ -665,14 +565,14 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 " LargeFile
 " ---------------------------------------------------
 Plugin 'vim-scripts/LargeFile'
+
 let g:LargeFile= 5 " files >= 5MB will use LargeFile rules
 
-"}}}
-
-" web {{{
-
+" vim-better-whitespace
+" ---------------------------------------------------
 Plugin 'ntpeters/vim-better-whitespace'
-nnoremap <unique> <leader>w :StripWhitespace<CR>
+
+nnoremap <unique> <leader>sw :StripWhitespace<CR>
 
 " emmet-vim
 " ---------------------------------------------------
@@ -682,7 +582,7 @@ Plugin 'mattn/emmet-vim'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-" vim-indent-guides: invoke by <leader>ig
+" vim-indent-guides
 " ---------------------------------------------------
 Plugin 'nathanaelkane/vim-indent-guides'
 
@@ -696,15 +596,16 @@ Plugin 'pangloss/vim-javascript'
 " ---------------------------------------------------
 Plugin 'kchmck/vim-coffee-script'
 
-" DISABLE: Slow to open big css file
 " vim-css-color
 " ---------------------------------------------------
 " Plugin 'skammer/vim-css-color'
 
 " vim-css3-syntax
+" ---------------------------------------------------
 Plugin 'hail2u/vim-css3-syntax'
 
 " vim-jade
+" ---------------------------------------------------
 Plugin 'digitaltoad/vim-jade'
 
 " vim-less
@@ -721,26 +622,59 @@ Plugin 'plasticboy/vim-markdown'
 
 let g:vim_markdown_initial_foldlevel=9999
 
-"}}}
-
-" TEST {{{
-" " test-loading
-" echomsg "test-loading: .vimrc"
-" Plugin 'exvim/test-loading'
-"}}}
-
-" vim:ts=4:sw=4:sts=4 et fdm=marker:
-
+" vim-jst
+" ---------------------------------------------------
 Plugin 'briancollins/vim-jst'
 
+" rust.vim
+" ---------------------------------------------------
 Plugin 'rust-lang/rust.vim'
 
+" vim-go
+" ---------------------------------------------------
 Plugin 'fatih/vim-go'
+
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+au FileType go nmap <Leader>s <Plug>(go-implements)
+
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+" vim-hybrid
+" ---------------------------------------------------
 Plugin 'w0ng/vim-hybrid'
+
 colorscheme hybrid
+
+" unite.vim
+" ---------------------------------------------------
+Plugin 'Shougo/unite.vim'
+
+nnoremap <leader>bf :<C-u>Unite buffer<CR>
+nnoremap <leader>fl :<C-u>Unite file<CR>
+nnoremap <leader>fr :<C-u>Unite file_rec<CR>
+
+" tagbar
+" ---------------------------------------------------
+Plugin 'majutsushi/tagbar'
+
+nnoremap <leader>tb :<C-u>TagbarToggle<CR>
