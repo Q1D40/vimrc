@@ -1,2 +1,4 @@
-# vimrc
-my vimrc base on exVim
+## About
+yangmu373's vimrc
+
+## Start
