@@ -671,7 +671,7 @@ Plugin 'Shougo/unite.vim'
 
 nnoremap <leader>bf :<C-u>Unite buffer<CR>
 nnoremap <leader>fl :<C-u>Unite file<CR>
-nnoremap <leader>fr :<C-u>Unite file_rec<CR>
+nnoremap <leader>fr :<C-u>Unite -start-insert file_rec<CR>
 
 " tagbar
 " ---------------------------------------------------
