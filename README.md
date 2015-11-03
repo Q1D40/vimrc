@@ -2,7 +2,7 @@
 
 yangmu373's vimrc for [Vim](http://www.vim.org) and [MacVim](https://github.com/macvim-dev/macvim).
 
-*Requires Git 1.7+ and Vim 7.3+*
+*Requires [Git] 1.7+ and [Vim] 7.3+*
 
 ## Quick Start
 
