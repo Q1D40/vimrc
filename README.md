@@ -14,7 +14,7 @@ yangmu373's vimrc for [Vim](http://www.vim.org) and [MacVim](https://github.com/
 
    `$ cd vimrc`
 
-   *Please backup your .vimrc before copy*
+   *Please backup your `~/.vimrc` and `~/.vim` they will be override*
 
    `$ cp vimrc ~/.vimrc`
 
