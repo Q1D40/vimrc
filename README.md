@@ -14,7 +14,7 @@ yangmu373's vimrc for [Vim](http://www.vim.org) and [MacVim](https://github.com/
 
    `$ cd vimrc`
 
-   *Your own `~/.vimrc` and `~/.vim` will be overrided*
+   *Your own `~/.vimrc` will be covered*
 
    `$ cp vimrc ~/.vimrc`
 
