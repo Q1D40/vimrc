@@ -477,10 +477,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 " syntastic
 " ---------------------------------------------------
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " this will make html file by Angular.js ignore errors
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 " neocomplcache.vim
 " " ---------------------------------------------------
