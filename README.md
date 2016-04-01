@@ -31,6 +31,9 @@ Supports language PHP JavaScript CSS HTML Node.js React Go and Rust
 4. Make JSX highlight better:
 
    `$ mkdir -p ~/.vim/after/syntax/javascript`
+
    `$ cp ~/.vim/bundle/vim-jsx/after/syntax/jsx.vim ~/.vim/after/syntax/javascript/jsx.vim`
+
    `$ mkdir -p ~/.vim/after/indent/javascript`
+
    `$ cp ~/.vim/bundle/vim-jsx/after/indent/jsx.vim ~/.vim/after/indent/javascript/jsx.vim`
