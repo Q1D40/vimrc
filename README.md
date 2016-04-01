@@ -2,11 +2,11 @@
 
 yangmu373's vimrc for [Vim](http://www.vim.org) [MacVim](https://github.com/macvim-dev/macvim) and [GVim](http://www.vim.org)
 
-Supports language PHP JavaScript CSS HTML Go and Rust
+Supports language PHP JavaScript CSS HTML Node.js React Go and Rust
 
 *Requires [Git] 1.7+ and [Vim] 7.3+*
 
-![PluginList](http://i.imgur.com/QhpduU0.jpg)
+![PluginList](http://i.imgur.com/0HmoEeo.jpg)
 
 ## Quick Start
 
@@ -27,3 +27,10 @@ Supports language PHP JavaScript CSS HTML Go and Rust
 3. Install Plugins:
 
    Launch `vim` and run `:PluginInstall`
+
+4. Make JSX highlight better:
+
+   `$ mkdir -p ~/.vim/after/syntax/javascript`
+   `$ cp ~/.vim/bundle/vim-jsx/after/syntax/jsx.vim ~/.vim/after/syntax/javascript/jsx.vim`
+   `$ mkdir -p ~/.vim/after/indent/javascript`
+   `$ cp ~/.vim/bundle/vim-jsx/after/indent/jsx.vim ~/.vim/after/indent/javascript/jsx.vim`
