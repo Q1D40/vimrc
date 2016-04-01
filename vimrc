@@ -433,6 +433,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#whitespace#check(),0)}'
 let g:airline_section_warning = ''
 
+" airline-onedark
+" ---------------------------------------------------
+Plugin 'joshdick/airline-onedark.vim'
+
+let g:airline_theme='onedark'
+
 " ctrlp: invoke by <ctrl-p>
 " Plugin 'kien/ctrlp.vim'
 " let g:ctrlp_working_path_mode = ''
@@ -659,11 +665,17 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
-" vim-hybrid
+" hybrid
 " ---------------------------------------------------
-Plugin 'w0ng/vim-hybrid'
+" Plugin 'w0ng/vim-hybrid'
 
-colorscheme hybrid
+" colorscheme hybrid
+
+" onedark
+" ---------------------------------------------------
+Plugin 'joshdick/onedark.vim'
+
+colorscheme onedark
 
 " unite.vim
 " ---------------------------------------------------
