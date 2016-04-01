@@ -411,7 +411,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " vim-color-solarized
 " ---------------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 
 " vim-airline
 " ---------------------------------------------------
@@ -691,3 +691,11 @@ nnoremap <leader>fr :<C-u>Unite -start-insert file_rec<CR>
 Plugin 'majutsushi/tagbar'
 
 nnoremap <leader>tb :<C-u>TagbarToggle<CR>
+
+" vim-node
+" ---------------------------------------------------
+Plugin 'moll/vim-node'
+
+" vim-jsx
+" ---------------------------------------------------
+Plugin 'mxw/vim-jsx'
