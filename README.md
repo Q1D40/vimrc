@@ -6,8 +6,6 @@ Supports language PHP JavaScript CSS HTML Node.js React Go and Rust
 
 *Requires [Git] 1.7+ and [Vim] 7.3+*
 
-![PluginList](http://i.imgur.com/0HmoEeo.jpg)
-
 ## Quick Start
 
 1. Set up vimrc:
@@ -28,7 +26,11 @@ Supports language PHP JavaScript CSS HTML Node.js React Go and Rust
 
    Launch `vim` and run `:PluginInstall`
 
-4. Make JSX highlight better:
+4. Install all the necessary binaries for vim-go:
+
+   Launch `vim` and run `:GoInstallBinaries`
+
+5. Make JSX highlight better:
 
    `$ mkdir -p ~/.vim/after/syntax/javascript`
 

@@ -96,15 +96,10 @@ else
     " let g:solarized_termcolors = 256
 endif
 
-" colorscheme hybrid
-" colorscheme solarized
-" colorscheme exlightgray
-
 "/////////////////////////////////////////////////////////////////////////////
 " General
 "/////////////////////////////////////////////////////////////////////////////
 
-"set path=.,/usr/include/*,, " where gf, ^Wf, :find will search
 set backup " make backup file and leave it around
 
 " setup back and swap directory
@@ -228,13 +223,6 @@ if has('gui_running')
     if exists('+columns')
         set columns=130
     endif
-
-    " DISABLE
-    " if WINDOWS()
-    "     au GUIEnter * simalt ~x " Maximize window when enter vim
-    " else
-    "     " TODO: no way right now
-    " endif
 endif
 
 set showfulltag " show tag with function protype.
@@ -254,8 +242,6 @@ set backspace=indent,eol,start " allow backspacing over everything in insert mod
 " indent options
 " see help cinoptions-values for more details
 set	cinoptions=>s,e0,n0,f0,{0,}0,^0,:0,=s,l0,b0,g0,hs,ps,ts,is,+s,c3,C0,0,(0,us,U0,w0,W0,m0,j0,)20,*30
-" default '0{,0},0),:,0#,!^F,o,O,e' disable 0# for not ident preprocess
-" set cinkeys=0{,0},0),:,!^F,o,O,e
 
 " official diff settings
 set diffexpr=g:MyDiff()
@@ -278,7 +264,6 @@ set expandtab " set expandtab on, the tab will be change to space automaticaly
 set ve=block " in visual block mode, cursor can be positioned where there is no actual character
 
 " set Number format to null(default is octal) , when press CTRL-A on number
-" like 007, it would not become 010
 set nf=
 
 " ------------------------------------------------------------------
@@ -329,12 +314,6 @@ if has('autocmd')
         au BufNewFile,BufEnter * set cpoptions+=d " NOTE: ctags find the tags file from the current path instead of the path of currect file
         au BufEnter * :syntax sync fromstart " ensure every file does syntax highlighting (full)
         au BufNewFile,BufRead *.avs set syntax=avs " for avs syntax file.
-
-        " DISABLE {
-        " NOTE: will have problem with exvim, because exvim use exES_CWD as working directory for tag and other thing
-        " Change current directory to the file of the buffer ( from Script#65"CD.vim"
-        " au   BufEnter *   execute ":lcd " . expand("%:p:h")
-        " } DISABLE end
 
         " ------------------------------------------------------------------
         " Desc: file types
@@ -421,32 +400,13 @@ if has('gui_running')
     let g:airline_powerline_fonts = 1
 else
     let g:airline_powerline_fonts = 1
-    " let g:airline_powerline_fonts = 0
 endif
 
 let g:airline#extensions#tabline#enabled = 0 " NOTE: When you open lots of buffers and typing text, it is so slow.
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline_section_b = "%{fnamemodify(bufname('%'),':p:.:h').'/'}"
-" let g:airline_section_c = '%t'
-" let g:airline_section_warning = airline#section#create(['whitespace']) " NOTE: airline#section#create has no effect in .vimrc initialize pahse
-" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#whitespace#check(),0)}'
 let g:airline_section_warning = ''
-
-" airline-onedark
-" ---------------------------------------------------
-Plugin 'joshdick/airline-onedark.vim'
-
-let g:airline_theme='onedark'
-
-" ctrlp: invoke by <ctrl-p>
-" Plugin 'kien/ctrlp.vim'
-" let g:ctrlp_working_path_mode = ''
-" let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
-" let g:ctrlp_follow_symlinks = 2
-" let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
-" nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
 
 " vim-fugitive
 " ---------------------------------------------------
@@ -469,68 +429,6 @@ let g:NERDTreeMouseMode = 1
 let g:NERDTreeMapToggleZoom = '<Space>'
 
 map <C-n> :NERDTreeToggle<CR>
-
-" nerdcommenter
-" ---------------------------------------------------
-" Plugin 'scrooloose/nerdcommenter'
-"
-" let g:NERDSpaceDelims = 1
-" let g:NERDRemoveExtraSpaces = 1
-" let g:NERDCustomDelimiters = {
-"             \ 'vimentry': { 'left': '--' },
-"             \ }
-" map <unique> <F11> <Plug>NERDCommenterAlignBoth
-" map <unique> <C-F11> <Plug>NERDCommenterUncomment
-
-" syntastic
-" ---------------------------------------------------
-" Plugin 'scrooloose/syntastic'
-
-" this will make html file by Angular.js ignore errors
-" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-
-" neocomplcache.vim
-" " ---------------------------------------------------
-" Plugin 'Shougo/neocomplcache.vim'
-
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_auto_completion_start_length = 2
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_auto_select = 1 " let neocomplcache's completion behavior like AutoComplPop
-" let g:neocomplcache_disable_auto_complete = 1 " Enable this if you like TAB for complete
-" " inoremap <C-p> <C-x><C-u>
-" " inoremap <expr><TAB>  pumvisible() ? '\<Down>' : '<TAB>'
-" " inoremap <expr><S-TAB>  pumvisible() ? '\<Up>' : ''
-
-" neocomplete.vim
-" ---------------------------------------------------
-Plugin 'Shougo/neocomplete.vim'
-
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_select = 1 " let neocomplete's completion behavior like AutoComplPop
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" " YouCompleteMe
-" " ---------------------------------------------------
-" Plugin 'Valloric/YouCompleteMe'
-
-" " neosnippet.vim
-" " ---------------------------------------------------
-" Plugin 'Shougo/neosnippet.vim'
-
-" " snipmate.vim
-" " ---------------------------------------------------
-" Plugin 'msanders/snipmate.vim'
-
-" snipmate-snippets
-" " ---------------------------------------------------
-" Plugin 'spf13/snipmate-snippets'
 
 " undotree
 " ---------------------------------------------------
