@@ -1,10 +1,10 @@
-## About
+# About
 
 yangmu373's vimrc for [Vim](http://www.vim.org) [MacVim](https://github.com/macvim-dev/macvim) and [GVim](http://www.vim.org)
 
 Supports language PHP JavaScript CSS HTML Node.js React Go and Rust
 
-*Requires [Git] 1.7+ and [Vim] 7.3+*
+Requires [Git] 1.7+ and [Vim] 7.3+
 
 ## Quick Start
 
